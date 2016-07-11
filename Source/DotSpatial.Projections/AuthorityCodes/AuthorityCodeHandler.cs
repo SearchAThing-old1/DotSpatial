@@ -11,9 +11,9 @@
 //
 //
 // Contributor(s): (Open source contributors should list themselves and their modifications here).
-// |         Name         |    Date    |                              Comment
-// |----------------------|------------|------------------------------------------------------------
-// |                      |            |
+// |         Name           |    Date    |                              Comment
+// |------------------------|------------|------------------------------------------------------------
+// | l.delana@swsglobal.com | 2016-07-06 | Exposed available ProjectionInfos
 // ********************************************************************************************************
 
 using System;
@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Text;
+using System.Linq;
 
 namespace DotSpatial.Projections.AuthorityCodes
 {
@@ -50,6 +51,13 @@ namespace DotSpatial.Projections.AuthorityCodes
 
         #endregion
 
+        public IEnumerable<ProjectionInfo> AllProjectionInfo
+        {
+            get
+            {
+                return _authorityCodeToProjectionInfo.Select(dk => dk.Value);
+            }
+        }
 
         /// <summary>
         /// The one and only <see cref="AuthorityCodeHandler"/>
