@@ -68,6 +68,7 @@
     </Compile>
     <Compile Include="BackBuffer.cs" />
     <Compile Include="BitmapFormatException.cs" />
+    <Compile Include="JenksBreaksCalcuation.cs" />
     <Compile Include="Expression.cs" />
     <Compile Include="ExtentExtcs.cs" />
     <Compile Include="IColorCategoryActions.cs" />
@@ -313,6 +314,7 @@
     <Compile Include="SelectionEM.cs" />
     <Compile Include="SelectionMode.cs" />
     <Compile Include="Statistics.cs" />
+    <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DotSpatial.Symbology.snk" />

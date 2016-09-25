@@ -24,6 +24,7 @@ using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Runtime.InteropServices;
 using OSGeo.GDAL;
 
@@ -183,6 +184,7 @@ namespace DotSpatial.Data.Rasters.GdalExtension
 
             double[] test = new double[6];
             _dataset.GetGeoTransform(test);
+            test = (new AffineTransform(test)).TransfromToCorner(0.5, 0.5);//shift origin by half a cell
             Bounds = new RasterBounds(_dataset.RasterYSize, _dataset.RasterXSize, test);
             _red = _dataset.GetRasterBand(1);
             _numOverviews = _red.GetOverviewCount();
@@ -241,16 +243,16 @@ namespace DotSpatial.Data.Rasters.GdalExtension
 
         #region Properties
 
-        #endregion
-
         /// <summary>
-        /// Gets or sets the fileName of the image source
+        /// Gets or sets the file name of the image source. If a relative path gets assigned it is changed to the absolute path including the file extension.
         /// </summary>
         public string Filename
         {
             get { return _fileName; }
-            set { _fileName = value; }
+            set { _fileName = Path.GetFullPath(value); }
         }
+
+        #endregion
 
         /// <summary>
         /// Returns ARGB 32 bpp regardless of the fact that the original is palette buffered.

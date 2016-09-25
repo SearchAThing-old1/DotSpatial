@@ -8,19 +8,28 @@ All notable changes to this project will be documented in this file.
 - Added property AppManager.BaseDirectory which allows to change base directory for plugins. (#758)
 - Support for formatted ESRI projection files (#793)
 - XML comments for publicly visible types and members
+- "Add layer to Map"-checkbox to the ToolDialog (#147)
+- CopySubset overloads with withAttributes parameters
+- Jenks Natural Breaks support in categories binning.
 
 ### Changed
 - GdalExtension: Updated to GDAL 1.1.11
-- Demo and Apps projects should have build files (#120
+- Demo and Apps projects should have build files (#120)
 - ExtensionManager & HideReleaseFromEndUser (#798)
 - Moved localizeable strings to resource files
 - Renamed FilterCollectionEM to FeatureSelectionExt because it contains extension methods for IFeatureSelection
+- Move FeatureSet.Filename / FilePath to DataSet (#821)
+- Changed Filename to absolute path so it stays the same even if CurrentDirectory is changed
+- Renamed IntervalMethod.Quantile to IntervalMethod.EqualFrequency for better consistency.
 
 ### Removed
 - Removed DotSpatial.Topology assembly (#633)
 - Removed obsolete methods\properties (#797)
 
 ### Fixed
+- Parameters for the Austrian Bundesmeldenetz in DotSpatial.Projections.ProjectedCategories.NationalGrids are incorrect (#855)
+- Raster extent shifts from correct extent (#725)
+- Inconsistent use of affine coefficients (#822)
 - Fixed the shift in x-coordinate when reprojecting from WGS84 to LAEA (#815)
 - Fixed LAEA reprojected y coordinate that resulted in n.def (#813)
 - ShapeReader skipping one entry when switching the page (#774)
@@ -49,3 +58,11 @@ All notable changes to this project will be documented in this file.
 - Select Layer in the MapFrame (#743)
 - Measure Plugin - unhandled exception (#792)
 - Error that caused the last value to be missing from the RasterSymbolizer.Scheme
+- Bug in tool Reproject Features (#761)
+- Clone a featureset with CopyFeatures throws exception (#780)
+- Make sure Feature.Copy doesn't throw an error if the Feature doesn't have a ParentFeatureSet
+- Symbology.IndexSelection.RemoveRegion is working slow (#718)
+- Exception in WebMap plugin if "espg"-substring is lower-case (#777)
+- Problem in rendering ECW images (#824)
+- Polygon layer - scheme partially resets when open properties window (#842)
+- Index Glitch in GdalRaster with Very Large Rasters (#849)
