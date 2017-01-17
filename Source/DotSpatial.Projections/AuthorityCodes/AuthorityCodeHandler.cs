@@ -6,12 +6,14 @@
 //--------------------------------------------------------------------------------------------------------
 // Name               |   Date             |         Comments
 //--------------------|--------------------|--------------------------------------------------------------
+// l.delana@swsglobal.com | 2016-07-06 | Exposed available ProjectionInfos
 // *******************************************************************************************************
 
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 
 namespace DotSpatial.Projections.AuthorityCodes
 {
@@ -60,6 +62,14 @@ namespace DotSpatial.Projections.AuthorityCodes
                 if (_authorityNameToProjectionInfo.TryGetValue(authorityCodeOrName, out pi))
                     return pi;
                 return null;
+            }
+        }
+
+        public IEnumerable<ProjectionInfo> AllProjectionInfo
+        {
+            get
+            {
+                return _authorityCodeToProjectionInfo.Select(dk => dk.Value);
             }
         }
 
