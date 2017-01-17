@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 
 namespace DotSpatial.Projections.AuthorityCodes
 {
@@ -110,7 +111,11 @@ namespace DotSpatial.Projections.AuthorityCodes
 
         private void ReadDefault()
         {
-            using (var str = DeflateStreamReader.DecodeEmbeddedResource("DotSpatial.Projections.AuthorityCodes.epsg.ds"))
+            var s = "DotSpatial.Projections.AuthorityCodes.epsg.ds";
+            // check for mono bug ( https://bugzilla.xamarin.com/show_bug.cgi?id=24454 )
+            var s_mono_bug = "DotSpatial.Projections.epsg.ds";
+            if (Assembly.GetCallingAssembly().GetManifestResourceNames().Contains(s_mono_bug)) s = s_mono_bug;
+            using (var str = DeflateStreamReader.DecodeEmbeddedResource(s))
             {
                 ReadFromStream(str, "EPSG");
             }
@@ -157,7 +162,7 @@ namespace DotSpatial.Projections.AuthorityCodes
                 if (proj4String.Contains("+proj=geocent")) return;
                 throw;
             }
-            
+
             pi.Authority = authorityCode.Substring(0, pos);
             pi.AuthorityCode = int.Parse(authorityCode.Substring(pos + 1), CultureInfo.InvariantCulture);
             pi.Name = string.IsNullOrEmpty(name) ? authorityCode : name;
