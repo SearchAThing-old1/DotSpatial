@@ -18,4 +18,12 @@
     <DocumentationFile>bin\Release\$(TargetFramework)\DotSpatial.Projections.xml</DocumentationFile>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="AuthorityCodes\epsg.ds" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="AuthorityCodes\epsg.ds" />
+  </ItemGroup>
+
 </Project>
