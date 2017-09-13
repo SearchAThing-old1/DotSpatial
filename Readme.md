@@ -8,10 +8,10 @@ https://github.com/DotSpatial/DotSpatial
 
 | build |
 |---|
-| [![searchathing MyGet Build Status](https://www.myget.org/BuildSource/Badge/searchathing?identifier=afb1778a-52d2-453a-98de-8d9aa70f0fa1)](https://github.com/devel0/DotSpatial) |
+| [![searchathing MyGet Build Status](https://www.myget.org/BuildSource/Badge/searchathing-old1?identifier=afb1778a-52d2-453a-98de-8d9aa70f0fa1)](https://github.com/devel0/DotSpatial) |
 
 ## Installation
 - nuget feeds
-  - searchathing :`https://www.myget.org/F/searchathing/api/v3/index.json`
+  - searchathing :`https://www.myget.org/F/searchathing-old1/api/v3/index.json`
   - imagesharp : `https://www.myget.org/F/imagesharp/api/v3/index.json`
 - pre-release package : `DotSpatial`
